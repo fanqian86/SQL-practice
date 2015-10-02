@@ -1,0 +1,6 @@
+# Write your MySQL query statement below
+select case count(*) when 0 then null else d.Salary end
+from
+(select e1.Id, e1.Salary
+from Employee e1 inner join Employee e2 on e1.salary<e2.Salary or (e1.Salary=e2.salary and e1.Id=e2.Id)
+group by e1.Id, e1.Salary having count(*)=2) d
